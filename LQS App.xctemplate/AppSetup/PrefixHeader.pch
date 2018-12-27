@@ -1,0 +1,53 @@
+//
+//  ___FILENAME___
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  ___COPYRIGHT___
+//
+
+#ifndef CommonPrefixHeader_pch
+#define CommonPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <LQSKit/LQSKit.h>
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+
+#import "MainBoxController.h"
+
+
+#define CommonTabBarTitleSelectedColor @"#F3BC15"
+
+#define CommonViewControllerBackgroundColor @"#131D28"
+
+#define kSeverIP @"api.football.zymc6868.com"  //外网测试
+
+
+#import "CommonNavigationView.h"
+
+
+
+
+#define CurrentNavigationControllerPushViewController(vc,selfOrWeakSelf) \
+LQSBoxController *boxController = [MainBoxController createWithBody:vc];\
+UIViewController *currentVC = [selfOrWeakSelf lqs_currentViewControllerWithClass:[LQSBoxController class]];\
+[currentVC lqs_currentNavigationControllerPushViewController:boxController];
+
+#define CurrentNavigationControllerPopViewController(selfOrWeakSelf) \
+UIViewController *currentVC = [selfOrWeakSelf lqs_currentViewControllerWithClass:[LQSBoxController class]];\
+[currentVC lqs_currentNavigationControllerPopViewController];
+
+#define CurrentControllerPresentViewController(vc,selfOrWeakSelf) \
+MainBoxController *box = [MainBoxController createWithBody:vc];\
+UIViewController *currentVC = [self lqs_currentViewControllerWithClass:[LQSBoxController class]];\
+[currentVC lqs_currentControllerPresentViewController:box];
+
+#define CurrentControllerDismissViewController(selfOrWeakSelf) \
+UIViewController *currentVC = [selfOrWeakSelf lqs_currentViewControllerWithClass:[LQSBoxController class]];\
+[currentVC lqs_currentControllerDismissViewController];
+
+#endif /* CommonPrefixHeader_pch */
